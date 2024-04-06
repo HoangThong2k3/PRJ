@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS `Snackfood` DEFAULT CHARACTER SET utf8mb4 COLLATE 
 
 
 USE `Snackfood`;
-CREATE TABLE UsersInfo(
+CREATE TABLE Users_info(
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'ID, tự động tăng',
           `firstname` NVARCHAR(30) NOT NULL    COMMENT 'tên',
           `lastname` NVARCHAR(30) NOT NULL     COMMENT 'họ',
@@ -25,39 +25,39 @@ CREATE TABLE Types(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Categories(
-          `categoryid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'loại đồ ăn/thức uống, ví dụ 1 là khô gà, 2 bánh tráng,...',
-          `categoryname` NVARCHAR(30)                          COMMENT 'khô gà/bánh tráng/trà sữa/...',
+          `category_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'loại đồ ăn/thức uống, ví dụ 1 là khô gà, 2 bánh tráng,...',
+          `category_name` NVARCHAR(30)                          COMMENT 'khô gà/bánh tráng/trà sữa/...',
           `type_id` INT                                        COMMENT 'chẳng hạn categoryid = 1 là khô gà -> typeid = 1, categoryid = 3 là trà sữa -> type id = 2',
           FOREIGN KEY (type_id) REFERENCES Types(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Products(
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY  COMMENT 'ID sản phẩm',
-          `productname` NVARCHAR(30) NOT NULL           COMMENT 'tên sản phẩm',
-          `categoryid` INT                              COMMENT 'tên thể loại sản phẩm',
+          `product_name` NVARCHAR(30) NOT NULL           COMMENT 'tên sản phẩm',
+          `category_id` INT                              COMMENT 'tên thể loại sản phẩm',
           `description` NVARCHAR(30)                    COMMENT 'comment',
           `images` VARCHAR(255) NOT NULL                COMMENT 'ảnh sản phẩm',
           `price` DECIMAL(10,2) NOT NULL                COMMENT 'giá sản phẩm',
           `status` bit not null                         COMMENT 'còn hay hết',
           `typeid` INT                                  COMMENT 'loại sản phẩm (đồ ăn/thức uống/...)',
-          FOREIGN KEY (categoryid) REFERENCES Categories(categoryid) ON DELETE SET NULL ON UPDATE CASCADE,
+          FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE SET NULL ON UPDATE CASCADE,
           FOREIGN KEY (typeid) REFERENCES Types(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Payments(
-          `paymentid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'ID của kiểu giao dịch',
+          `payment_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'ID của kiểu giao dịch',
           `payment_method` NVARCHAR(30)                       COMMENT 'trả tiền mặt/chuyển khoảng bằng...'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Orders(
           `order_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'ID của đơn hàng',
-          `orderdate` DATETIME                               COMMENT 'ngày order',
-          `totalprice` DECIMAL(10,2)                         COMMENT 'tổng tiền',
-          `paymentid` INT NOT NULL                           COMMENT 'ID của kiểu giao dịch',
+          `order_date` DATETIME                               COMMENT 'ngày order',
+          `total_price` DECIMAL(10,2)                         COMMENT 'tổng tiền',
+          `payment_id` INT NOT NULL                           COMMENT 'ID của kiểu giao dịch',
           `user_id` INT NOT NULL                             COMMENT 'ID của người dùng',
           `status` bit NOT NULL                              COMMENT 'Đã giao hay chưa giao, status',
-          FOREIGN KEY (paymentid) REFERENCES Payments(paymentid),
-          FOREIGN KEY (user_id) REFERENCES UsersInfo(id)
+          FOREIGN KEY (payment_id) REFERENCES Payments(payment_id),
+          FOREIGN KEY (user_id) REFERENCES Users_info(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE OrderItem(
