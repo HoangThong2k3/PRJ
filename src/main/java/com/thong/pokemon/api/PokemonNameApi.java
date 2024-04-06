@@ -1,0 +1,25 @@
+package com.thong.pokemon.api;
+
+import com.thong.pokemon.models.Pokemon;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+
+@WebServlet(name = "PokemonNameApi", value = "/api/pokemon/")
+public class PokemonNameApi extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //make api return json of pokemon name
+        response.setContentType("application/json");
+        Pokemon pokemon = new Pokemon("ditto", "normal");
+        response.getWriter().write(pokemon.toJson());
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+}
