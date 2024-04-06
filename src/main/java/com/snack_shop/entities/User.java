@@ -1,4 +1,4 @@
-package com.thong.pokemon.models;
+package com.snack_shop.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

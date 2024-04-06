@@ -1,4 +1,4 @@
-package com.thong.pokemon.controllers;
+package com.snack_shop.controller.users;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

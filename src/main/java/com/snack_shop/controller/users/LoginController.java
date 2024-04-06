@@ -1,7 +1,4 @@
-package com.thong.pokemon.controllers;
-
-import com.thong.pokemon.services.ServiceSingleton;
-import com.thong.pokemon.services.UserService;
+package com.snack_shop.controller.users;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
