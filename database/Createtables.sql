@@ -39,9 +39,9 @@ CREATE TABLE Products(
           `images` VARCHAR(255) NOT NULL                COMMENT 'ảnh sản phẩm',
           `price` DECIMAL(10,2) NOT NULL                COMMENT 'giá sản phẩm',
           `status` bit not null                         COMMENT 'còn hay hết',
-          `typeid` INT                                  COMMENT 'loại sản phẩm (đồ ăn/thức uống/...)',
+          `type_id` INT                                  COMMENT 'loại sản phẩm (đồ ăn/thức uống/...)',
           FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE SET NULL ON UPDATE CASCADE,
-          FOREIGN KEY (typeid) REFERENCES Types(id) ON DELETE CASCADE ON UPDATE CASCADE
+          FOREIGN KEY (type_id) REFERENCES Types(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Payments(
