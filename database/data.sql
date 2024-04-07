@@ -23,7 +23,7 @@ INSERT INTO Payments (`payment_method`) VALUES
 (N'Tiền mặt'),
 (N'Credit Card');
 
-INSERT INTO Products (`productname`,`categoryid`,`description`,`images`,`price`,`status`,`typeid`) VALUES
+INSERT INTO Products (`productname`,`categoryid`,`description`,`images`,`price`,`status`,`type_id`) VALUES
 (N'Khô gà lá chanh',1,'Khô gà lá chanh là một món ngon độc đáo kết hợp giữa hương vị đậm đà của thịt gà và hương thơm dịu nhẹ từ lá chanh. Đây là một sản phẩm ẩm thực truyền thống, được chế biến tỉ mỉ từ những nguyên liệu chất lượng nhất.','view/assets/home/img/products/khoga1.jpg',60000,1,1),
 (N'Khô bò sợi',1,'Khô bò sợi là một món ngon truyền thống được chế biến từ thịt bò tươi ngon, qua quá trình chế biến đặc biệt để tạo ra những sợi thịt mềm và thơm ngon. Đây là một lựa chọn lý tưởng cho những ai yêu thích hương vị đậm đà và thích thưởng thức các loại thực phẩm chế biến tỉ mỉ.','view/assets/home/img/products/khobo1.jpg',60000,0,1),
 (N'Khô heo cháy tỏi',1,'Khô heo cháy tỏi là một món ngon đặc trưng trong ẩm thực, kết hợp giữa hương vị đặc biệt của thịt heo và hương thơm dịu nhẹ từ tỏi. Sản phẩm này được chế biến tỉ mỉ từ những nguyên liệu chất lượng nhất, mang lại trải nghiệm ẩm thực đậm đà và hấp dẫn cho mọi thực khách.','view/assets/home/img/products/khoheo1.jpg',60000,1,1),
