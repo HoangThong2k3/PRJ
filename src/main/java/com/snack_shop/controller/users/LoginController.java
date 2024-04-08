@@ -15,7 +15,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("./");
             return;
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
         requestDispatcher.forward(request, response);
     }
 

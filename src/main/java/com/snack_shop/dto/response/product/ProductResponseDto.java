@@ -3,25 +3,38 @@ package com.snack_shop.dto.response.product;
 import com.snack_shop.enums.ProductStatus;
 
 public class ProductResponseDto {
-    private int id;
+    private String category;
+    private int productID;
     private String productName;
-    private int cateogryId;
     private String description;
-    private String imageLink;
-    private double price;
+    private Double price;
+    private int quantity;
+    private String image;
     private ProductStatus status;
-    private int typeId;
+    private int typeID;
 
     public ProductResponseDto() {
     }
 
-
-    public int getId() {
-        return id;
+    public ProductResponseDto(String category, int productID, String productName, String description,
+                              Double price, int quantity, String image, ProductStatus status, int typeID) {
+        this.category = category;
+        this.productID = productID;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.image = image;
+        this.status = status;
+        this.typeID = typeID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
     public String getProductName() {
@@ -32,14 +45,6 @@ public class ProductResponseDto {
         this.productName = productName;
     }
 
-    public int getCateogryId() {
-        return cateogryId;
-    }
-
-    public void setCateogryId(int cateogryId) {
-        this.cateogryId = cateogryId;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -48,19 +53,27 @@ public class ProductResponseDto {
         this.description = description;
     }
 
-    public String getImageLink() {
-        return imageLink;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public double getPrice() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -72,11 +85,34 @@ public class ProductResponseDto {
         this.status = status;
     }
 
-    public int getTypeId() {
-        return typeId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getTypeID() {
+        return typeID;
+    }
+
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductResponseDto{" +
+            "product_id=" + productID +
+            ", product_name='" + productName + '\'' +
+            ", description='" + description + '\'' +
+            ", image='" + image + '\'' +
+            ", quantity=" + quantity +
+            ", price=" + price +
+            ", status=" + status +
+            ", category_id='" + category + '\'' +
+            ", type_id=" + typeID +
+            '}';
     }
 }
