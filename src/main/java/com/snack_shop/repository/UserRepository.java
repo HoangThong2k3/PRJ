@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.snack_shop.dto.request.user.RegisterRequestDto;
+import com.snack_shop.utils.DBUtils;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserRepository {
@@ -13,7 +15,7 @@ public class UserRepository {
     private static final String VALIDATE_LOGIN = "select * from users where username = ? and status = ?";
 
     public boolean registerUser(RegisterRequestDto user) throws SQLException {
-        try (Connection connection = DBUtil.getConnection();
+        try (Connection connection = DBUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
             String hashPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
 
@@ -27,7 +29,7 @@ public class UserRepository {
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DBUtil.printSQLException(e);
+            DBUtils.printSQLException(e);
         }
         return false;
     }

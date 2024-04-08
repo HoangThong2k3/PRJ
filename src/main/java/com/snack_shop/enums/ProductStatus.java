@@ -1,4 +1,5 @@
 package com.snack_shop.enums;
 
-public class ProductStatus {
+public enum ProductStatus {
+    OUTOFSTOCK, INSTOCK
 }
