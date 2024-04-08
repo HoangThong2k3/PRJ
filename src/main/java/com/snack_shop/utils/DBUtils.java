@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DBUtil {
+public class DBUtils {
     private static Connection conn;
 
-    public DBUtil() {
+    public DBUtils() {
     }
 
     public static Connection getConnection() {
