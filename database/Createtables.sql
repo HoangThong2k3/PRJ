@@ -6,17 +6,17 @@ CREATE DATABASE IF NOT EXISTS `Snackfood` DEFAULT CHARACTER SET utf8mb4 COLLATE 
 
 
 USE `Snackfood`;
-CREATE TABLE Users_info(
+CREATE TABLE User (
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'ID, tự động tăng',
-          `firstname` NVARCHAR(30) NOT NULL    COMMENT 'tên',
-          `lastname` NVARCHAR(30) NOT NULL     COMMENT 'họ',
+          `first_name` NVARCHAR(30) NOT NULL    COMMENT 'tên',
+          `last_name` NVARCHAR(30) NOT NULL     COMMENT 'họ',
           `avatar` varchar(200) NOT NULL       COMMENT 'ảnh (img)',
           `email` NVARCHAR(50) NOT NULL        COMMENT 'email',
           `username` VARCHAR(30) NOT NULL      COMMENT 'username để đăng nhập',
           `password` VARCHAR(64) NOT NULL      COMMENT 'password (hash bằng...)',
           `address` NVARCHAR(200) NOT NULL     COMMENT 'địa chỉ để nhận ship',
           `phone` NVARCHAR(15) NOT NULL        COMMENT 'số điện thoại để nhận ship',
-          `roleid` INT NOT NULL                COMMENT 'admin/user'
+          `role_id` INT NOT NULL                COMMENT 'admin/user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Types(
