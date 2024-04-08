@@ -27,7 +27,7 @@ CREATE TABLE Types(
 CREATE TABLE Categories(
           `category_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'loại đồ ăn/thức uống, ví dụ 1 là khô gà, 2 bánh tráng,...',
           `category_name` NVARCHAR(30)                          COMMENT 'khô gà/bánh tráng/trà sữa/...',
-          `type_id` INT                                        COMMENT 'chẳng hạn categoryid = 1 là khô gà -> typeid = 1, categoryid = 3 là trà sữa -> type id = 2',
+          `type_id` INT                                        COMMENT 'chẳng hạn category_id = 1 là khô gà -> typeid = 1, category_id = 3 là trà sữa -> type id = 2',
           FOREIGN KEY (type_id) REFERENCES Types(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

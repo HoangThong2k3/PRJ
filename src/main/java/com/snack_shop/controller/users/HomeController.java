@@ -10,25 +10,25 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            String username = null;
-            String password = null;
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("username")) {
-                    request.setAttribute("username", cookie.getValue());
-                }
-                if (cookie.getName().equals("password")) {
-                    request.setAttribute("password", cookie.getValue());
-                }
-                UserService userService = ServiceSingleton.getUserServiceInstance();
-
-                if (userService.login(username, password)) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("username", username);
-                }
-            }
-        }
+//        Cookie[] cookies = request.getCookies();
+//        if (cookies != null) {
+//            String username = null;
+//            String password = null;
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("username")) {
+//                    request.setAttribute("username", cookie.getValue());
+//                }
+//                if (cookie.getName().equals("password")) {
+//                    request.setAttribute("password", cookie.getValue());
+//                }
+//
+//
+//                if (userService.login(username, password)) {
+//                    HttpSession session = request.getSession();
+//                    session.setAttribute("username", username);
+//                }
+//            }
+//        }
 
         //get Session from server
         HttpSession session = request.getSession(false);
@@ -37,7 +37,7 @@ public class HomeController extends HttpServlet {
         }
         System.out.println("HomeController");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Home.jsp");
         requestDispatcher.forward(request, response);
     }
 
