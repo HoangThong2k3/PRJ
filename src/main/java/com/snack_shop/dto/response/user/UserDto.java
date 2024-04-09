@@ -1,41 +1,38 @@
-package com.snack_shop.dto.request.user;
+package com.snack_shop.dto.response.user;
 
 import com.snack_shop.enums.UserRole;
 
-public class RegisterRequestDto {
+public class UserDto {
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
+    private String address;
     private String phone;
-    private String username;
-    private String password;
+    private String avatar;
     private UserRole role;
 
-    public RegisterRequestDto(String firstName, String lastName, String email,
-                              String phone, String username, String password) {
+    public UserDto() {
+    }
+
+    public UserDto(int id, String firstName, String lastName, String email,
+                   String address, String phone, String avatar, UserRole role) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.address = address;
         this.phone = phone;
-        this.username = username;
-        this.password = password;
-        this.role = UserRole.BUYER;
+        this.avatar = avatar;
+        this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public int getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -62,12 +59,28 @@ public class RegisterRequestDto {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public UserRole getRole() {
@@ -80,13 +93,14 @@ public class RegisterRequestDto {
 
     @Override
     public String toString() {
-        return "RegisterRequestDto{" +
-            "username='" + username + '\'' +
-            ", password='" + password + '\'' +
+        return "LoginResponseDto{" +
+            "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
+            ", address='" + address + '\'' +
             ", phone='" + phone + '\'' +
+            ", avatar='" + avatar + '\'' +
             ", role=" + role +
             '}';
     }

@@ -1,5 +1,10 @@
 package com.snack_shop.controller.users;
 
+import com.snack_shop.dto.request.user.LoginRequestDto;
+import com.snack_shop.dto.response.user.UserDto;
+import com.snack_shop.service.UserService;
+import com.snack_shop.service.impl.UserServiceImpl;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -7,39 +12,36 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //get Session from server
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("username") != null) {
-            response.sendRedirect("./");
-            return;
-        }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
-        requestDispatcher.forward(request, response);
-    }
+    private static final long serialVersionUID = 2860215007883522580L;
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private UserService authService;
+
+    public void init() {
+        authService = new UserServiceImpl();
+    }
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        try {
 
-        // get UserSerivce instance
-        UserService userService = ServiceSingleton.getUserServiceInstance();
-
-        if (userService.login(username, password)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            Cookie cookieUserName = new Cookie("username", username);
-            Cookie cookiePassword = new Cookie("password", password);
-            cookieUserName.setMaxAge(60 * 3);
-            cookiePassword.setMaxAge(60 * 3);
-            response.addCookie(cookieUserName);
-            response.addCookie(cookiePassword);
-            response.sendRedirect("./");
-        } else {
-            response.sendRedirect("./login");
+            UserDto userInfo = authService.login(new LoginRequestDto(username, password));
+            System.out.println(userInfo);
+            if (userInfo != null) {
+                // TODO: save login info into session.
+                HttpSession session = request.getSession();
+                session.setAttribute("userInfo", userInfo);
+                log("Saved Session!");
+                response.sendRedirect("./home.jsp");
+            } else {
+                log("Wrong username or password");
+                response.sendRedirect("./llogin.jsp?err=");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
+
 }
