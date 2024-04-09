@@ -1,4 +1,4 @@
-INSERT INTO UsersInfo (`firstname`,`lastname`,`email`,`avatar`,`username`,`password`,`address`,`phone`,`roleid`) VALUES
+INSERT INTO users (`first_name`,`last_name`,`email`,`avatar`,`username`,`password`,`address`,`phone`,`role_id`) VALUES
 (N'admin', N'', 'admin@gmail.com', 'view/assets/home/img/users/admin.png', 'admin', '12345', N'Quận 9', '0912345678', 1),
 (N'Hoàng', N'Thống', 'Thonghpqe170132@fpt.edu.vn', 'view/assets/home/img/users/u thong.jpg','Miner', '12345', N'Khu Công Nghệ Cao Hòa Lạc, Thạch Hoà, Thạch Thất, Hà Nội', '0989421953', 1),
 (N'Đinh', N'Hiệp', 'Hiepdsqe180120@fpt.edu.vn', 'view/assets/home/img/users/u hiep.jpg','Hellcat', '12345', N'R639+HM2, Khu đô thị mới, Thành phố Qui Nhơn, Bình Định 55117', '0912198702', 2),
@@ -12,7 +12,7 @@ INSERT INTO Types (`name`) VALUES
 (N'Đồ Ăn'),
 (N'Nước Uống');
 
-INSERT INTO Categories (`categoryname`,`type_id`) VALUES
+INSERT INTO Categories (`category_name`,`type_id`) VALUES
 (N'Đồ khô',1),
 (N'Bánh tráng',1),
 (N'Đồ ăn khác',1),
@@ -23,7 +23,7 @@ INSERT INTO Payments (`payment_method`) VALUES
 (N'Tiền mặt'),
 (N'Credit Card');
 
-INSERT INTO Products (`productname`,`categoryid`,`description`,`images`,`price`,`status`,`type_id`) VALUES
+INSERT INTO Products (`product_name`,`category_id`,`description`,`images`,`price`,`status`,`type_id`) VALUES
 (N'Khô gà lá chanh',1,'Khô gà lá chanh là một món ngon độc đáo kết hợp giữa hương vị đậm đà của thịt gà và hương thơm dịu nhẹ từ lá chanh. Đây là một sản phẩm ẩm thực truyền thống, được chế biến tỉ mỉ từ những nguyên liệu chất lượng nhất.','view/assets/home/img/products/khoga1.jpg',60000,1,1),
 (N'Khô bò sợi',1,'Khô bò sợi là một món ngon truyền thống được chế biến từ thịt bò tươi ngon, qua quá trình chế biến đặc biệt để tạo ra những sợi thịt mềm và thơm ngon. Đây là một lựa chọn lý tưởng cho những ai yêu thích hương vị đậm đà và thích thưởng thức các loại thực phẩm chế biến tỉ mỉ.','view/assets/home/img/products/khobo1.jpg',60000,0,1),
 (N'Khô heo cháy tỏi',1,'Khô heo cháy tỏi là một món ngon đặc trưng trong ẩm thực, kết hợp giữa hương vị đặc biệt của thịt heo và hương thơm dịu nhẹ từ tỏi. Sản phẩm này được chế biến tỉ mỉ từ những nguyên liệu chất lượng nhất, mang lại trải nghiệm ẩm thực đậm đà và hấp dẫn cho mọi thực khách.','view/assets/home/img/products/khoheo1.jpg',60000,1,1),
