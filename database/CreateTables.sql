@@ -35,7 +35,7 @@ CREATE TABLE Products(
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY  COMMENT 'ID sản phẩm',
           `product_name` NVARCHAR(30) NOT NULL           COMMENT 'tên sản phẩm',
           `category_id` INT                              COMMENT 'tên thể loại sản phẩm',
-          `description` NVARCHAR(30)                    COMMENT 'comment',
+          `description` NVARCHAR(500)                    COMMENT 'comment',
           `images` VARCHAR(255) NOT NULL                COMMENT 'ảnh sản phẩm',
           `price` DECIMAL(10,2) NOT NULL                COMMENT 'giá sản phẩm',
           `status` bit not null                         COMMENT 'còn hay hết',
