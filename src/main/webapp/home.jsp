@@ -29,10 +29,15 @@
 </head>
 
 <body>
+    <%-- Header Section Begin --%>
     <%@include file="layout/header.jsp"%>
+    <%-- Header Section End--%>
 
 
 
+    <!-- Footer Section Begin -->
+    <%@include file="layout/footer.jsp"%>
+    <!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="resources/js/jquery-3.3.1.min.js"></script>

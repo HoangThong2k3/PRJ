@@ -22,19 +22,11 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
-                <div class="header__cart">
-                    <div class="user-login">
-                        <a href="./login.jsp"><i class="fa fa-user"></i> Login </a>
-                    </div>
-                    <div class="user-login">
-                        <a href="./register.jsp"><i class="fa fa-registered"></i> Register </a>
-                    </div>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                    </ul>
-                </div>
-            </div>
+<%--            <div class="col-lg-3">--%>
+<%--                <div class="header__cart">--%>
+<%--                    --%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
         <div class="humberger__open">
             <i class="fa fa-bars"></i>
