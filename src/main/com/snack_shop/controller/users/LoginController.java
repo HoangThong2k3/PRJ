@@ -1,7 +1,7 @@
 package com.snack_shop.controller.users;
 
 import com.snack_shop.dto.request.user.LoginRequestDto;
-import com.snack_shop.dto.response.user.UserDto;
+import com.snack_shop.dto.response.user.UserResponseDto;
 import com.snack_shop.service.UserService;
 import com.snack_shop.service.impl.UserServiceImpl;
 
@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
         try {
 
-            UserDto userInfo = authService.login(new LoginRequestDto(username, password));
+            UserResponseDto userInfo = authService.login(new LoginRequestDto(username, password));
             System.out.println(userInfo);
             if (userInfo != null) {
                 // TODO: save login info into session.

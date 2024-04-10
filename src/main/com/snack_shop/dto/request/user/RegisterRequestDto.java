@@ -1,8 +1,10 @@
 package com.snack_shop.dto.request.user;
 
 import com.snack_shop.enums.UserRole;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class RegisterRequestDto {
+
     private String firstName;
     private String lastName;
     private String email;
@@ -18,7 +20,7 @@ public class RegisterRequestDto {
         this.email = email;
         this.phone = phone;
         this.username = username;
-        this.password = password;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
         this.role = UserRole.BUYER;
     }
 

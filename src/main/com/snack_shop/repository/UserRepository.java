@@ -9,14 +9,14 @@ import java.util.List;
 
 import com.snack_shop.dto.request.user.LoginRequestDto;
 import com.snack_shop.dto.request.user.RegisterRequestDto;
-import com.snack_shop.dto.response.user.UserDto;
+import com.snack_shop.dto.response.user.UserResponseDto;
 import com.snack_shop.enums.UserRole;
 import com.snack_shop.utils.DBUtils;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserRepository {
     private static final String INSERT_USERS_SQL = "INSERT INTO users"
-        + "  (first_name, last_name, username, password, phone, email, role_id) VALUES " + " (?, ?, ?, ?, ?);";
+        + "  (first_name, last_name, username, password, phone, email, role_id, avatar, address) VALUES " + " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String VALIDATE_LOGIN = "select * from users where username = ? and password = ?";
     private static final String GET_ALL_USERS = "select * from users";
 
@@ -27,11 +27,12 @@ public class UserRepository {
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
             preparedStatement.setString(3, user.getUsername());
-            preparedStatement.setString(4, hashPassword);
+            preparedStatement.setString(4, user.getPassword());
             preparedStatement.setString(5, user.getPhone());
             preparedStatement.setString(6, user.getEmail());
             preparedStatement.setInt(7, user.getRole().ordinal());
-
+            preparedStatement.setString(8, "default.jpg");
+            preparedStatement.setString(9, "Earth");
             System.out.println(preparedStatement);
             System.out.println(user);
             preparedStatement.executeUpdate();
@@ -42,7 +43,7 @@ public class UserRepository {
         return false;
     }
 
-    public UserDto validateLogin(LoginRequestDto user) throws SQLException {
+    public UserResponseDto validateLogin(LoginRequestDto user) throws SQLException {
         try (Connection connection = DBUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(VALIDATE_LOGIN)) {
             preparedStatement.setString(1, user.getUsername());
@@ -53,7 +54,7 @@ public class UserRepository {
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                return new UserDto(
+                return new UserResponseDto(
                     rs.getInt("id"),
                     rs.getString("firstName"),
                     rs.getString("lastName"),
@@ -70,13 +71,13 @@ public class UserRepository {
         return null;
     }
 
-    public List<UserDto> getAllUsers() {
-        List<UserDto> users = new ArrayList<>();
+    public List<UserResponseDto> getAllUsers() {
+        List<UserResponseDto> users = new ArrayList<>();
         try (Connection connection = DBUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                UserDto user = new UserDto(
+                UserResponseDto user = new UserResponseDto(
                     rs.getInt("id"),
                     rs.getString("firstName"),
                     rs.getString("lastName"),

@@ -2,7 +2,7 @@ package com.snack_shop.dto.response.user;
 
 import com.snack_shop.enums.UserRole;
 
-public class UserDto {
+public class UserResponseDto {
     private int id;
     private String firstName;
     private String lastName;
@@ -12,11 +12,11 @@ public class UserDto {
     private String avatar;
     private UserRole role;
 
-    public UserDto() {
+    public UserResponseDto() {
     }
 
-    public UserDto(int id, String firstName, String lastName, String email,
-                   String address, String phone, String avatar, UserRole role) {
+    public UserResponseDto(int id, String firstName, String lastName, String email,
+                           String address, String phone, String avatar, UserRole role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

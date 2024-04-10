@@ -1,7 +1,6 @@
 package com.snack_shop.controller.users;
 
-import com.snack_shop.dto.request.user.LoginRequestDto;
-import com.snack_shop.dto.response.user.UserDto;
+import com.snack_shop.dto.response.user.UserResponseDto;
 import com.snack_shop.service.UserService;
 import com.snack_shop.service.impl.UserServiceImpl;
 
@@ -27,7 +26,7 @@ public class ListAllUsersController extends HttpServlet {
 
 
         try {
-            List<UserDto> users = userService.getAllUsers();
+            List<UserResponseDto> users = userService.getAllUsers();
             HttpSession session = request.getSession();
             session.setAttribute("userList", users);
             log("Saved Session!");

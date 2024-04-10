@@ -2,7 +2,7 @@ package com.snack_shop.service.impl;
 
 import com.snack_shop.dto.request.user.LoginRequestDto;
 import com.snack_shop.dto.request.user.RegisterRequestDto;
-import com.snack_shop.dto.response.user.UserDto;
+import com.snack_shop.dto.response.user.UserResponseDto;
 import com.snack_shop.repository.UserRepository;
 import com.snack_shop.service.UserService;
 
@@ -13,22 +13,17 @@ public class UserServiceImpl implements UserService {
     private final UserRepository UserRepository = new UserRepository();
 
     @Override
-    public static String hashPassword(String password) {
-        return Bcrypt.hashpw(password, Bcrypt.gensalt(12));
-    }
-
-    @Override
     public boolean register(RegisterRequestDto registerRequestDto) throws SQLException{
         return UserRepository.registerUser(registerRequestDto);
     }
 
     @Override
-    public UserDto login(LoginRequestDto loginRequestDto) throws SQLException {
+    public UserResponseDto login(LoginRequestDto loginRequestDto) throws SQLException {
         return UserRepository.validateLogin(loginRequestDto);
     }
 
     @Override
-    public List<UserDto> getAllUsers() throws SQLException {
+    public List<UserResponseDto> getAllUsers() throws SQLException {
         return UserRepository.getAllUsers();
     }
 
