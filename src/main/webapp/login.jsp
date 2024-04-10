@@ -26,7 +26,7 @@
     <%-- Header Section End--%>
 
     <div class="login_form_image">
-        <img src="./resources/images/account-background.jpg" class="image_background" />
+        <img src="./resources/images/account-background.jpg" class="image_background"  alt=""/>
     </div>
 
     <div class="login_form">

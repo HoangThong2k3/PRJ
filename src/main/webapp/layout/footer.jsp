@@ -6,9 +6,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt="" /></a>
-                        </div>
+                        <h6>Contact Us</h6>
                         <ul>
                             <li>Address: FPT University Quy Nhon</li>
                             <li>Phone: +84 9999 9999</li>
@@ -39,6 +37,7 @@
                                     width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
+                        <br/>
                         <div class="footer__widget__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
@@ -57,7 +56,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                All rights reserved | <i class="fa fa-heart" aria-hidden="true"></i> By Group 1
+                                All rights reserved |  <i class="fa fa-heart" aria-hidden="true"></i> by Group 1
                             </p>
                         </div>
                         <div class="footer__copyright__payment"><img src="img/payment-item.png" alt="" /></div>

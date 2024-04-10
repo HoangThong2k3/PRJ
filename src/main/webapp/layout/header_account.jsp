@@ -1,12 +1,12 @@
 <header class="header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="header__logo">
                     <a href="./"><img src="resources/images/logo.jpg" alt="Snack Shop Logo"></a>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="./home.jsp">Home</a></li>
