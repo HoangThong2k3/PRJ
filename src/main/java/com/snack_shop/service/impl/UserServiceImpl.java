@@ -11,6 +11,12 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private final UserRepository UserRepository = new UserRepository();
+
+    @Override
+    public static String hashPassword(String password) {
+        return Bcrypt.hashpw(password, Bcrypt.gensalt(12));
+    }
+
     @Override
     public boolean register(RegisterRequestDto registerRequestDto) throws SQLException{
         return UserRepository.registerUser(registerRequestDto);
