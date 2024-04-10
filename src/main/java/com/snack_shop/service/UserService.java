@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface UserService {
+    public String hashPassword(String password);
+
     public boolean register(RegisterRequestDto registerRequestDto) throws SQLException;
 
     public UserDto login(LoginRequestDto loginRequestDto) throws SQLException;

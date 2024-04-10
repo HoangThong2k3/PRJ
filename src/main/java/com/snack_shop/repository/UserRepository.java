@@ -24,8 +24,6 @@ public class UserRepository {
         try (Connection connection = DBUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
 
-            String hashPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
-
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
             preparedStatement.setString(3, user.getUsername());

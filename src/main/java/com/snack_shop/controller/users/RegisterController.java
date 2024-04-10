@@ -31,8 +31,8 @@ public class RegisterController extends HttpServlet {
         String phone = request.getParameter("txtPhone");
         String username = request.getParameter("username");
         String password = request.getParameter("txtPassword");
+        String hashedPassword = userService.hashPassword(password);
 
-        log(password);
 
         try {
             boolean isRegisted = userService.register(new RegisterRequestDto(firstName, lastName, email, phone, username, password));
