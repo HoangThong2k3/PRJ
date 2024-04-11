@@ -19,6 +19,7 @@ public class LoginController extends HttpServlet {
     public void init() {
         authService = new UserServiceImpl();
     }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,8 +41,26 @@ public class LoginController extends HttpServlet {
                 response.sendRedirect("./llogin.jsp?err=");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log("ERROR at LoginController: " + e.getMessage());
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
     }
 
 }

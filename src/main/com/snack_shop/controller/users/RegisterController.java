@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/RegisterController")
 public class RegisterController extends HttpServlet {
 
-    private UserService userService;
+    private UserService authService;
 
     public void init() {
-        userService = new UserServiceImpl();
+        authService = new UserServiceImpl();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class RegisterController extends HttpServlet {
         String password = request.getParameter("txtPassword");
 
         try {
-            boolean isRegisted = userService.register(new RegisterRequestDto(firstName, lastName, email, phone, username, password));
+            boolean isRegisted = authService.register(new RegisterRequestDto(firstName, lastName, email, phone, username, password));
             if (isRegisted) {
                 System.out.println("User is registered");
                 response.sendRedirect("./home.jsp");
@@ -41,8 +41,15 @@ public class RegisterController extends HttpServlet {
                 response.sendRedirect("./register.jsp");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log("ERROR at RegisterController: " + e.getMessage());
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+        processRequest(request, response);
     }
 
     @Override
@@ -51,6 +58,10 @@ public class RegisterController extends HttpServlet {
         processRequest(request, response);
     }
 
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }
 
 
 }

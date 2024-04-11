@@ -101,7 +101,7 @@ public class UserResponseDto {
             ", address='" + address + '\'' +
             ", phone='" + phone + '\'' +
             ", avatar='" + avatar + '\'' +
-            ", role=" + role +
+            ", role=" + role.toString() +
             '}';
     }
 }

@@ -19,6 +19,7 @@ public class UserRepository {
         + "  (first_name, last_name, username, password, phone, email, role_id, avatar, address) VALUES " + " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String VALIDATE_LOGIN = "select * from users where username = ? and password = ?";
     private static final String GET_ALL_USERS = "select * from users";
+    private static final String GET_USER_BY_NAME = "select * from users where first_name like ? or last_name like ?";
 
     public boolean registerUser(RegisterRequestDto user) throws SQLException {
         try (Connection connection = DBUtils.getConnection();
@@ -75,6 +76,34 @@ public class UserRepository {
         List<UserResponseDto> users = new ArrayList<>();
         try (Connection connection = DBUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                UserResponseDto user = new UserResponseDto(
+                    rs.getInt("id"),
+                    rs.getString("firstName"),
+                    rs.getString("lastName"),
+                    rs.getString("email"),
+                    rs.getString("address"),
+                    rs.getString("phone"),
+                    rs.getString("avatar"),
+                    UserRole.values()[rs.getInt("role")]
+                );
+                users.add(user);
+            }
+            return users;
+        } catch (SQLException e) {
+            DBUtils.printSQLException(e);
+        }
+        return null;
+    }
+
+    public List<UserResponseDto> getUserByName(String name) {
+        List<UserResponseDto> users = new ArrayList<>();
+        try (Connection connection = DBUtils.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS)) {
+            preparedStatement.setString(1, "%"+ name +"%");
+            preparedStatement.setString(2, "%"+ name +"%");
+            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 UserResponseDto user = new UserResponseDto(

@@ -13,4 +13,6 @@ public interface UserService {
     public UserResponseDto login(LoginRequestDto loginRequestDto) throws SQLException;
 
     public List<UserResponseDto> getAllUsers() throws SQLException;
+
+    public List<UserResponseDto> getUserByName(String name) throws SQLException;
 }

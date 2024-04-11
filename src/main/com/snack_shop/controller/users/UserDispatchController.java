@@ -15,7 +15,7 @@ public class UserDispatchController extends HttpServlet {
     private final String LOGIN_PAGE = "home.jsp";
     private final String REGISTER_CONTROLLER = "RegisterController";
     private final String LOGIN_CONTROLLER = "LoginController"; // url-pattern
-    private final String SEARCH_LASTNAME_CONTROLLER = "SearchLastnameController";
+    private final String SEARCH_USER_BY_NAME_CONTROLLER = "SearchUserByNameController";
     private final String DELETE_ACCOUNT_CONTROLLER = "DeleteAccountController";
     private final String UPDATE_ACCOUNT_CONTROLLER = "UpdateAccountController";
     private final String PROCESS_ACCOUNT_CONTROLLER = "ProcessRequestController";
@@ -41,7 +41,7 @@ public class UserDispatchController extends HttpServlet {
             } else if (button.equals("Login")) {
                 url = LOGIN_CONTROLLER;
             } else if (button.equals("Search")) {
-                url = SEARCH_LASTNAME_CONTROLLER;
+                url = SEARCH_USER_BY_NAME_CONTROLLER;
             } else if (button.equals("Delete")) {
                 url = DELETE_ACCOUNT_CONTROLLER;
             } else if (button.equals("Update")) {
@@ -61,9 +61,21 @@ public class UserDispatchController extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+        processRequest(request, response);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
     }
 
 }

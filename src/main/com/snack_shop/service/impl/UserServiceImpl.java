@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
         return UserRepository.getAllUsers();
     }
 
+    @Override
+    public List<UserResponseDto> getUserByName(String name) throws SQLException {
+        return UserRepository.getUserByName(name);
+    }
+
 }
