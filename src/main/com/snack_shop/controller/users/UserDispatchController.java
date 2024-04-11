@@ -17,7 +17,7 @@ public class UserDispatchController extends HttpServlet {
     private final String LOGIN_CONTROLLER = "LoginController"; // url-pattern
     private final String SEARCH_USER_BY_NAME_CONTROLLER = "SearchUserByNameController";
     private final String DELETE_ACCOUNT_CONTROLLER = "DeleteAccountController";
-    private final String UPDATE_ACCOUNT_CONTROLLER = "UpdateAccountController";
+    private final String BUYER_UPDATE_ACCOUNT_CONTROLLER = "BuyerUpdateAccountController";
     private final String PROCESS_ACCOUNT_CONTROLLER = "ProcessRequestController";
     private final String ADD_ITEM_TO_CART_CONTROLLER = "AddItemToCartController";
     private final String REMOVE_ITEM_FROM_CART_CONTROLLER = "RemoveItemsFromCartController";
@@ -44,8 +44,8 @@ public class UserDispatchController extends HttpServlet {
                 url = SEARCH_USER_BY_NAME_CONTROLLER;
             } else if (button.equals("Delete")) {
                 url = DELETE_ACCOUNT_CONTROLLER;
-            } else if (button.equals("Update")) {
-                url = UPDATE_ACCOUNT_CONTROLLER;
+            } else if (button.equals("Buyer Update Account")) {
+                url = BUYER_UPDATE_ACCOUNT_CONTROLLER;
             } else if (button.equals("Add Item To Your Cart")) {
                 url = ADD_ITEM_TO_CART_CONTROLLER;
             } else if (button.equals("View Your Cart")) {

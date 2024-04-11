@@ -1,23 +1,22 @@
 package com.snack_shop.controller.users;
 
-import com.snack_shop.dto.response.user.UserResponseDto;
 import com.snack_shop.service.UserService;
 import com.snack_shop.service.impl.UserServiceImpl;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "MainUserController", value = "/MainUserController")
-public class ListAllUsersController extends HttpServlet {
+@WebServlet(name = "AdminUpdateAccountController", value = "/AdminUpdateAccountController")
+public class AdminUpdateAccountController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private final String ERROR_PAGE = "error.html";
+    UserService userService;
 
-    private UserService userService;
     public void init() {
         userService = new UserServiceImpl();
     }
@@ -25,22 +24,35 @@ public class ListAllUsersController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String searchValue = request.getParameter("txtSearchValue");
-        try {
-            List<UserResponseDto> users = userService.getAllUsers(searchValue);
-            HttpSession session = request.getSession();
-            session.setAttribute("userList", users);
-            log("Saved Session!");
-            response.sendRedirect("./AdminManagement.jsp");
 
-        } catch (Exception e) {
-            log("ERROR at ListAllUsersController: " + e.getMessage());
+        String username = request.getParameter("txtUsername");
+
+        String firstName = request.getParameter("txtFirstName");
+        String lastName = request.getParameter("txtLastName");
+        String role = request.getParameter("txtRole");
+
+        String searchValue = request.getParameter("lastSearchValue");
+        String url = ERROR_PAGE;
+        try {
+            boolean result = userService.deleteUser(username);
+
+            if (result) {
+                url = "UserDispatchController"
+                    + "?btAction=Search"
+                    + "&lastSearchValue=" + searchValue;
+            }
+
+        } catch (SQLException ex) {
+            log("ERROR at DeleteUserController: " + ex.getMessage());
+        }
+        finally {
+            response.sendRedirect(url);
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-
         processRequest(request, response);
     }
 
@@ -54,5 +66,6 @@ public class ListAllUsersController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+
 }
 

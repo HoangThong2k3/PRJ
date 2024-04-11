@@ -1,10 +1,10 @@
-package com.snack_shop.dto.response.user;
+package com.snack_shop.dto.request.user;
 
 import com.snack_shop.enums.UserRole;
 
-public class UserResponseDto {
-    private int id;
+public class UpdateRequestDto {
     private String username;
+    private String password;
     private String firstName;
     private String lastName;
     private String email;
@@ -13,13 +13,12 @@ public class UserResponseDto {
     private String avatar;
     private UserRole role;
 
-    public UserResponseDto() {
+    public UpdateRequestDto() {
     }
 
-    public UserResponseDto(int id, String username, String firstName, String lastName, String email,
-                           String address, String phone, String avatar, UserRole role) {
-        this.id = id;
+    public UpdateRequestDto(String username, String password, String firstName, String lastName, String email, String address, String phone, String avatar, UserRole role) {
         this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -37,12 +36,12 @@ public class UserResponseDto {
         this.username = username;
     }
 
-    public int getId() {
-        return id;
+    public String getPassword() {
+        return password;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -103,16 +102,16 @@ public class UserResponseDto {
 
     @Override
     public String toString() {
-        return "UserResponseDto{" +
-            "id=" + id +
-            ", username='" + username + '\'' +
+        return "UpdateRequestDto{" +
+            "username='" + username + '\'' +
+            ", password='" + password + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
             ", address='" + address + '\'' +
             ", phone='" + phone + '\'' +
             ", avatar='" + avatar + '\'' +
-            ", role=" + role.toString() +
+            ", role=" + role +
             '}';
     }
 }

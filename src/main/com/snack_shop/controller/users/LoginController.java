@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
             if (userInfo != null) {
                 // TODO: save login info into session.
                 HttpSession session = request.getSession();
-                session.setAttribute("userInfo", userInfo);
+                session.setAttribute("USER_INFO", userInfo);
                 log("Saved Session!");
                 response.sendRedirect("./home.jsp");
             } else {
