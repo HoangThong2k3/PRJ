@@ -18,7 +18,7 @@
                                 <li><a href="./checkout.html">Check Out</a></li>
                             </ul>
                         </li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="../contact.jsp">Contact</a></li>
                     </ul>
                 </nav>
             </div>

@@ -41,6 +41,8 @@
     <%-- Header Section End--%>
 
 
+
+
     <!-- Footer Section Begin -->
     <%@include file="layout/footer.jsp"%>
     <!-- Footer Section End -->

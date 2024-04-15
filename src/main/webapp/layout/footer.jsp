@@ -9,8 +9,8 @@
                         <h6>Contact Us</h6>
                         <ul>
                             <li>Address: FPT University Quy Nhon</li>
-                            <li>Phone: +84 9999 9999</li>
-                            <li>Email: 10diemPRJ391@fpt.vn</li>
+                            <li>Phone: +84 123.456.789</li>
+                            <li>Email: snackshop@fpt.com</li>
                         </ul>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                All rights reserved |  <i class="fa fa-heart" aria-hidden="true"></i> by Group 1
+                                All rights reserved
                             </p>
                         </div>
                         <div class="footer__copyright__payment"><img src="img/payment-item.png" alt="" /></div>
