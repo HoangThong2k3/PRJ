@@ -5,15 +5,16 @@ import com.snack_shop.dto.response.user.UserResponseDto;
 import com.snack_shop.service.UserService;
 import com.snack_shop.service.impl.UserServiceImpl;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "LoginController", value = "/login")
+@WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
-    private static final long serialVersionUID = 2860215007883522580L;
-
     private UserService authService;
 
     public void init() {
@@ -24,21 +25,23 @@ public class LoginController extends HttpServlet {
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("txtUsername");
+        String password = request.getParameter("txtPassword");
+        System.out.println(username + " " + password);
         try {
 
             UserResponseDto userInfo = authService.login(new LoginRequestDto(username, password));
             System.out.println(userInfo);
+
             if (userInfo != null) {
                 // TODO: save login info into session.
                 HttpSession session = request.getSession();
                 session.setAttribute("USER_INFO", userInfo);
-                log("Saved Session!");
+                System.out.println("Login success");
                 response.sendRedirect("./home.jsp");
             } else {
                 log("Wrong username or password");
-                response.sendRedirect("./llogin.jsp?err=");
+                response.sendRedirect("./login.jsp?err=");
             }
         } catch (Exception e) {
             log("ERROR at LoginController: " + e.getMessage());
@@ -48,7 +51,6 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-
         processRequest(request, response);
     }
 

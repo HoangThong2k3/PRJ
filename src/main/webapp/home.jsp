@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <head>
@@ -30,9 +30,15 @@
 
 <body>
     <%-- Header Section Begin --%>
-    <%@include file="layout/header.jsp"%>
+    <c:choose>
+        <c:when test="${sessionScope.USER_INFO == null}">
+            <%@include file="layout/header.jsp"%>
+        </c:when>
+        <c:otherwise>
+            <%@include file="layout/header-with-account.jsp"%>
+        </c:otherwise>
+    </c:choose>
     <%-- Header Section End--%>
-
 
 
     <!-- Footer Section Begin -->

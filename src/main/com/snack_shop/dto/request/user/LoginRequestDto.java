@@ -1,5 +1,8 @@
 package com.snack_shop.dto.request.user;
 
+import com.snack_shop.utils.HashTokenGenerator;
+import org.mindrot.jbcrypt.BCrypt;
+
 public class LoginRequestDto {
     private String username;
     private String password;

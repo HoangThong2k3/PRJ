@@ -24,15 +24,14 @@
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <div class="user-login">
-                        <a class="login-register" href="./login.jsp"><i class="fa fa-user fa-2x"></i><span style="font-size: 17px">Login</span> </a>
+                    <div class="logo">
+                        <img src="resources/images/${sessionScope.USER_INFO.getAvatar()}"  alt=""/>
                     </div>
-                    <div class="user-login">
-                        <a class="login-register" href="./register.jsp"><i class="fa fa-registered fa-2x"></i><span style="font-size: 17px">Register</span></a>
+                    <div>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-shopping-bag fa-4"></i> <span>3</span></a></li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                    </ul>
                 </div>
             </div>
         </div>

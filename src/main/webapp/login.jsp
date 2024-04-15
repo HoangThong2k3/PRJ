@@ -30,7 +30,7 @@
     </div>
 
     <div class="login_form">
-        <form>
+        <form  id="loginForm" method="POST" action="UserDispatchController">
             <div class="form-group">
                 <h4 class="form-group-title">Login</h4>
             </div>
@@ -42,7 +42,8 @@
                 <label>Password</label>
                 <input type="password" class="form-control" placeholder="Password" name="txtPassword" required/>
             </div>
-            <button type="submit" class="btn btn-primary form-control">Login</button>
+            <br/>
+            <button type="submit" class="btn btn-primary form-control" name="btAction" value="Login">Login</button>
         </form>
     </div>
 

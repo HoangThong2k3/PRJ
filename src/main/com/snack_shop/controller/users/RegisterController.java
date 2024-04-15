@@ -38,6 +38,7 @@ public class RegisterController extends HttpServlet {
                 System.out.println("User is registered");
                 response.sendRedirect("./home.jsp");
             } else {
+                System.out.println("User is not registered");
                 response.sendRedirect("./register.jsp");
             }
         } catch (Exception e) {
