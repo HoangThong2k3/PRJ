@@ -24,7 +24,10 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <div class="logo">
-                        <img src="resources/images/${sessionScope.USER_INFO.getAvatar()}"  alt=""/>
+                        <a href="./Edit">
+                            <img src="resources/images/${sessionScope.USER_INFO.getAvatar()}"  alt=""/>
+                        </a>
+
                     </div>
                     <div>
                         <ul>

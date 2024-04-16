@@ -9,9 +9,8 @@ import java.io.IOException;
 public class LogoutController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.removeAttribute("userInfo");
-        session.invalidate();
+
+        request.getSession().invalidate();
         response.sendRedirect("./home.jsp");
     }
 

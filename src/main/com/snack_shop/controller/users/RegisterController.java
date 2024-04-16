@@ -31,9 +31,9 @@ public class RegisterController extends HttpServlet {
         String phone = request.getParameter("txtPhone");
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
-
+        String address = request.getParameter("txtAddress");
         try {
-            boolean isRegisted = authService.register(new RegisterRequestDto(firstName, lastName, email, phone, username, password));
+            boolean isRegisted = authService.register(new RegisterRequestDto(firstName, lastName, email, phone, address, username, password));
             if (isRegisted) {
                 System.out.println("User is registered");
                 response.sendRedirect("./home.jsp");

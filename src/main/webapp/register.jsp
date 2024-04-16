@@ -60,6 +60,11 @@
 
             <div class="form-group">
                 <label>Username</label>
+                <input type="text" class="form-control" placeholder="Address" name="txtAddress" required/>
+            </div>
+
+            <div class="form-group">
+                <label>Username</label>
                 <input type="text" class="form-control" placeholder="Username" name="txtUsername" required/>
             </div>
             <div class="form-group">

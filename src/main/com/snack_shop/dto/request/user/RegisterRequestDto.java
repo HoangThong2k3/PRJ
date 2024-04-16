@@ -9,19 +9,29 @@ public class RegisterRequestDto {
     private String lastName;
     private String email;
     private String phone;
+    private String address;
     private String username;
     private String password;
     private UserRole role;
 
     public RegisterRequestDto(String firstName, String lastName, String email,
-                              String phone, String username, String password) {
+                              String phone, String address, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.address = address;
         this.username = username;
         this.password = password;
         this.role = UserRole.BUYER;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUsername() {
@@ -83,12 +93,13 @@ public class RegisterRequestDto {
     @Override
     public String toString() {
         return "RegisterRequestDto{" +
-            "username='" + username + '\'' +
-            ", password='" + password + '\'' +
-            ", firstName='" + firstName + '\'' +
+            "firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
             ", phone='" + phone + '\'' +
+            ", address='" + address + '\'' +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
             ", role=" + role +
             '}';
     }

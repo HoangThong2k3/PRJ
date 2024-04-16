@@ -27,6 +27,7 @@ public class UserRepository {
     private static final String DELETE_USER = "delete from account where username = ?";
     private static final String UPDATE_USER  = "update account set first_name = ?, last_name = ?, email = ?, address = ?, phone = ?, avatar = ? where username = ?";
     private static final String UPDATE_USER_PASSWORD = "update account set password = ? where username = ?";
+    private static final String GET_ROLE = "select * from account where username = ?";
 
     public boolean registerUser(RegisterRequestDto user) throws SQLException {
         PreparedStatement preparedStatementCheck = null;
@@ -49,7 +50,7 @@ public class UserRepository {
             preparedStatement.setString(6, user.getEmail());
             preparedStatement.setInt(7, user.getRole().ordinal());
             preparedStatement.setString(8, "default.jpg");
-            preparedStatement.setString(9, "Earth");
+            preparedStatement.setString(9, user.getAddress());
             System.out.println(preparedStatement);
             System.out.println(user);
             preparedStatement.executeUpdate();
@@ -174,10 +175,16 @@ public class UserRepository {
     }
 
     public boolean updateUser(UpdateRequestDto user) {
+
         try (Connection connection = DBUtils.getConnection()) {
             PreparedStatement preparedStatement;
             if (!user.getPassword().isEmpty() || user.getPassword() != "") {
                 String hashedPassword = HashTokenGenerator.generateHashToken(user.getPassword());
+                preparedStatement = connection.prepareStatement(GET_ROLE);
+                preparedStatement.setString(1, user.getUsername());
+                ResultSet rs = preparedStatement.executeQuery();
+                UserRole role = rs.getObject("role_id", UserRole.class);
+                user.setRole(role);
                 preparedStatement = connection.prepareStatement(UPDATE_USER_PASSWORD);
                 preparedStatement.setString(1, hashedPassword);
                 preparedStatement.setString(2, user.getUsername());
