@@ -2,11 +2,11 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS `SnackFood` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `SnackShop` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 
-USE `SnackFood`;
-CREATE TABLE User (
+USE `SnackShop`;
+CREATE TABLE Users (
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'ID, tự động tăng',
           `first_name` NVARCHAR(30) NOT NULL    COMMENT 'tên',
           `last_name` NVARCHAR(30) NOT NULL     COMMENT 'họ',
@@ -16,7 +16,7 @@ CREATE TABLE User (
           `password` VARCHAR(64) NOT NULL      COMMENT 'password (hash bằng...)',
           `address` NVARCHAR(200) NOT NULL     COMMENT 'địa chỉ để nhận ship',
           `phone` NVARCHAR(15) NOT NULL        COMMENT 'số điện thoại để nhận ship',
-          `role_id` INT NOT NULL                COMMENT 'admin/user'
+          `role_id` INT NOT NULL                COMMENT 'admin/users'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE Types(
@@ -35,7 +35,7 @@ CREATE TABLE Products(
           `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY  COMMENT 'ID sản phẩm',
           `product_name` NVARCHAR(30) NOT NULL           COMMENT 'tên sản phẩm',
           `category_id` INT                              COMMENT 'tên thể loại sản phẩm',
-          `description` NVARCHAR(30)                    COMMENT 'comment',
+          `description` NVARCHAR(300)                    COMMENT 'comment',
           `images` VARCHAR(255) NOT NULL                COMMENT 'ảnh sản phẩm',
           `price` DECIMAL(10,2) NOT NULL                COMMENT 'giá sản phẩm',
           `status` bit not null                         COMMENT 'còn hay hết',
@@ -57,7 +57,7 @@ CREATE TABLE Orders(
           `user_id` INT NOT NULL                             COMMENT 'ID của người dùng',
           `status` bit NOT NULL                              COMMENT 'Đã giao hay chưa giao, status',
           FOREIGN KEY (payment_id) REFERENCES Payments(payment_id),
-          FOREIGN KEY (user_id) REFERENCES User(id)
+          FOREIGN KEY (user_id) REFERENCES Users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE OrderItem(
