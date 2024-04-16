@@ -21,7 +21,7 @@ public class RegisterRequestDto {
         this.phone = phone;
         this.username = username;
         this.password = password;
-        this.role = UserRole.ADMIN;
+        this.role = UserRole.BUYER;
     }
 
     public String getUsername() {

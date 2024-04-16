@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "HomeController", urlPatterns = {"/", "/home"})
+@WebServlet(name = "HomeController", urlPatterns = {"/"})
 public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -38,10 +38,10 @@ public class LoginController extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("USER_INFO", userInfo);
                 System.out.println("Login success");
-                response.sendRedirect("./home.jsp");
+                response.sendRedirect("./");
             } else {
-                log("Wrong username or password");
-                response.sendRedirect("./login.jsp?err=");
+                System.out.println("Wrong username or password");
+
             }
         } catch (Exception e) {
             log("ERROR at LoginController: " + e.getMessage());

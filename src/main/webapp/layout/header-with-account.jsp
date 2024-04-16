@@ -9,8 +9,8 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./home.jsp">Home</a></li>
-                        <li><a href="./shop-grid.html">Shop</a></li>
+                        <li class="active"><a href="./">Home</a></li>
+                        <li><a href="./PagingProductController?page=1">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shopping-cart.jsp">Shoping Cart</a></li>

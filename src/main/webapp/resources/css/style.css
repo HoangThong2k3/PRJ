@@ -77,7 +77,7 @@ h6 {
 p {
 	font-size: 16px;
 	font-family: "Cairo", sans-serif;
-	color: #6f6f6f;
+	color: black;
 	font-weight: 400;
 	line-height: 26px;
 	margin: 0 0 15px 0;
@@ -203,6 +203,10 @@ ol {
 }
 .login_form_image {
 	position: relative;
+}
+
+.footer__widget__social > a > i {
+	padding-top: 11px;
 }
 
 .image_background {
@@ -601,7 +605,6 @@ ol {
 -----------------------*/
 
 .hero {
-	padding-bottom: 50px;
 }
 
 .hero.hero-normal {
@@ -715,7 +718,7 @@ ol {
 }
 
 .hero__search__form form input {
-	width: 70%;
+	width: 99%;
 	border: none;
 	height: 48px;
 	font-size: 16px;
@@ -851,7 +854,7 @@ ol {
 -----------------------*/
 
 .featured {
-	padding-top: 80px;
+	padding-top: 18px;
 	padding-bottom: 40px;
 }
 
@@ -967,7 +970,8 @@ ol {
 
 .featured__item__text {
 	text-align: center;
-	padding-top: 15px;
+	padding: 15px;
+
 }
 
 .featured__item__text h6 {
@@ -1767,8 +1771,8 @@ ol {
 
 .product__details__text ul {
 	border-top: 1px solid #ebebeb;
-	padding-top: 40px;
-	margin-top: 50px;
+	padding-top: 5px;
+	margin-top: 25px;
 }
 
 .product__details__text ul li {
@@ -2792,7 +2796,6 @@ ol {
 /*---------------------
   Contact
 -----------------------*/
-
 .contact {
 	padding-top: 40px;
 	padding-bottom: 8px;

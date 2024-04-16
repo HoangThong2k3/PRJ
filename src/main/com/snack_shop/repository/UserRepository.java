@@ -17,16 +17,16 @@ import com.snack_shop.utils.DBUtils;
 import com.snack_shop.utils.HashTokenGenerator;
 
 public class UserRepository {
-    private static final String INSERT_USERS_SQL = "INSERT INTO users"
+    private static final String INSERT_USERS_SQL = "INSERT INTO account"
         + "  (first_name, last_name, username, password, phone, email, role_id, avatar, address) "
         + "VALUES " + " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    private static final String CHECK_DUPLICATE_USER = "select * from users where username = ? or email = ? or phone = ?";
-    private static final String VALIDATE_LOGIN = "select * from users where username = ? and password = ?";
-    private static final String GET_ALL_USERS = "select * from users";
-    private static final String GET_USER_BY_NAME = "select * from users where first_name like ? or last_name like ?";
-    private static final String DELETE_USER = "delete from users where username = ?";
-    private static final String UPDATE_USER  = "update users set first_name = ?, last_name = ?, email = ?, address = ?, phone = ?, avatar = ? where username = ?";
-    private static final String UPDATE_USER_PASSWORD = "update users set password = ? where username = ?";
+    private static final String CHECK_DUPLICATE_USER = "select * from account where username = ? or email = ? or phone = ?";
+    private static final String VALIDATE_LOGIN = "select * from account where username = ? and password = ?";
+    private static final String GET_ALL_USERS = "select * from account";
+    private static final String GET_USER_BY_NAME = "select * from account where first_name like ? or last_name like ?";
+    private static final String DELETE_USER = "delete from account where username = ?";
+    private static final String UPDATE_USER  = "update account set first_name = ?, last_name = ?, email = ?, address = ?, phone = ?, avatar = ? where username = ?";
+    private static final String UPDATE_USER_PASSWORD = "update account set password = ? where username = ?";
 
     public boolean registerUser(RegisterRequestDto user) throws SQLException {
         PreparedStatement preparedStatementCheck = null;
@@ -76,7 +76,7 @@ public class UserRepository {
             if (rs.next()) {
                 System.out.println("User found!");
                 return new UserResponseDto (
-                    rs.getInt("id"),
+                    rs.getInt("account_id"),
                     rs.getString("username"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
@@ -109,7 +109,7 @@ public class UserRepository {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 UserResponseDto user = new UserResponseDto(
-                    rs.getInt("id"),
+                    rs.getInt("account_id"),
                     rs.getString("username"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
@@ -139,7 +139,7 @@ public class UserRepository {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 UserResponseDto user = new UserResponseDto(
-                    rs.getInt("id"),
+                    rs.getInt("account_id"),
                     rs.getString("username"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),

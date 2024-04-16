@@ -1,32 +1,41 @@
 package com.snack_shop.dto.response.product;
 
 import com.snack_shop.enums.ProductStatus;
+import java.util.Date;
+
 
 public class ProductResponseDto {
     private String category;
     private int productID;
     private String productName;
     private String description;
+    private String image;
     private Double price;
     private int quantity;
-    private String image;
     private ProductStatus status;
-    private int typeID;
+    private Date importDate;
 
     public ProductResponseDto() {
     }
 
-    public ProductResponseDto(String category, int productID, String productName, String description,
-                              Double price, int quantity, String image, ProductStatus status, int typeID) {
+    public ProductResponseDto(String category, int productID, String productName, String description, String image, Double price, int quantity, ProductStatus status, Date importDate) {
         this.category = category;
         this.productID = productID;
         this.productName = productName;
         this.description = description;
+        this.image = image;
         this.price = price;
         this.quantity = quantity;
-        this.image = image;
         this.status = status;
-        this.typeID = typeID;
+        this.importDate = importDate;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public int getProductID() {
@@ -61,20 +70,20 @@ public class ProductResponseDto {
         this.image = image;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public ProductStatus getStatus() {
@@ -85,34 +94,26 @@ public class ProductResponseDto {
         this.status = status;
     }
 
-    public String getCategory() {
-        return category;
+    public Date getImportDate() {
+        return importDate;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getTypeID() {
-        return typeID;
-    }
-
-    public void setTypeID(int typeID) {
-        this.typeID = typeID;
+    public void setImportDate(Date importDate) {
+        this.importDate = importDate;
     }
 
     @Override
     public String toString() {
         return "ProductResponseDto{" +
-            "product_id=" + productID +
-            ", product_name='" + productName + '\'' +
+            "category='" + category + '\'' +
+            ", productID=" + productID +
+            ", productName='" + productName + '\'' +
             ", description='" + description + '\'' +
             ", image='" + image + '\'' +
-            ", quantity=" + quantity +
             ", price=" + price +
+            ", quantity=" + quantity +
             ", status=" + status +
-            ", category_id='" + category + '\'' +
-            ", type_id=" + typeID +
+            ", importDate=" + importDate +
             '}';
     }
 }

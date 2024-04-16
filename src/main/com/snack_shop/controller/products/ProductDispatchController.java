@@ -5,8 +5,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ProductDispatchController", urlPatterns = "/ProductDispatchController")
+@WebServlet("/ProductDispatchController")
 public class ProductDispatchController extends HttpServlet {
+    private final String LOAD_ALL_PRODUCTS = "GetAllProductsController";
+
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

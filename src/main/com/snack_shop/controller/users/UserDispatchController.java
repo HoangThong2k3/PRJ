@@ -25,14 +25,12 @@ public class UserDispatchController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         String button = request.getParameter("btAction");
         System.out.println(button);
         String url = LOGIN_PAGE;
-
         try {
             if (button == null) {
                 url = PROCESS_ACCOUNT_CONTROLLER;
